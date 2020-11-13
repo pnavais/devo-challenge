@@ -36,6 +36,17 @@ import static org.junit.jupiter.api.Assertions.*;
 public class KComplementaryFinderTest {
 
     @Test
+    @DisplayName("Count K-complementary pairs")
+    void countPairsTest() {
+        countKPairs(new int[] { 0, 0, 2 }, 1);
+        countKPairs(new int[] { 1, 1 }, 2);
+        countKPairs(new int[] { 1, 0 }, 1);
+        countKPairs(new int[] { 1, 2, 2, 3 }, 3);
+        countKPairs(new int[] { 2, 1, 3, 5, 4, 3, 0, 6}, 6);
+        countKPairs(new int[] { 4, 4, 2, 3, 5, 4, 3, 0, 6}, 6);
+    }
+
+    @Test
     @DisplayName("Get valid K-complementary pairs")
     void getValidKComplementaryTest() {
         checkValidKPairs(new int[][] { {0,1} }, new int[] { 1, 0 }, 1);
@@ -79,17 +90,6 @@ public class KComplementaryFinderTest {
     }
 
     @Test
-    @DisplayName("Count K-complementary pairs")
-    void countPairsTest() {
-        countKPairs(new int[] { 0, 0, 2 }, 1);
-        countKPairs(new int[] { 1, 1 }, 2);
-        countKPairs(new int[] { 1, 0 }, 1);
-        countKPairs(new int[] { 1, 2, 2, 3 }, 3);
-        countKPairs(new int[] { 2, 1, 3, 5, 4, 3, 0, 6}, 6);
-        countKPairs(new int[] { 4, 4, 2, 3, 5, 4, 3, 0, 6}, 6);
-    }
-
-    @Test
     @DisplayName("Check K-complementary pairs with alternative algorithm")
     void checkAlternativeAlgorithmTest() {
         checkValidKPairsAlternative(new int[] { 1, 0 }, 1);
@@ -129,6 +129,19 @@ public class KComplementaryFinderTest {
 
     /**
      * Compute the K-pairs for a given input array and k value
+     * and checks that results in an empty List of K-Pairs
+     *
+     * @param input the input array string
+     * @param k the k value
+     */
+    private void checkInValidKPairs(int[] input, int k) {
+        List<KPair> actualKPairList = KComplementaryFinder.findKComplementaryPairs(input, k);
+        assertNotNull(actualKPairList, "The k-pair list should not be null");
+        assertEquals(Collections.emptyList(), actualKPairList, "The k-pair list should be empty");
+    }
+
+    /**
+     * Compute the K-pairs for a given input array and k value
      * using both algorithms and compares their output.
      *
      * @param input the input K-pairs array (matrix)
@@ -140,17 +153,5 @@ public class KComplementaryFinderTest {
         assertThat("The k-pair lists do not match", actualKPairList, containsInAnyOrder(expectedKPairList.toArray()));
     }
 
-    /**
-     * Compute the K-pairs for a given input array and k value
-     * and checks that results in an empty List of K-Pairs
-     *
-     * @param input the input array string
-     * @param k the k value
-     */
-    private void checkInValidKPairs(int[] input, int k) {
-        List<KPair> actualKPairList = KComplementaryFinder.findKComplementaryPairs(input, k);
-        assertNotNull(actualKPairList, "The k-pair list should not be null");
-        assertEquals(Collections.emptyList(), actualKPairList, "The k-pair list should be empty");
-    }
 
 }

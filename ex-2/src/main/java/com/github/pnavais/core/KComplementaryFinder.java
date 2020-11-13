@@ -24,15 +24,48 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Collectors;
 
 /**
  * An implementation of a K-Complementary finder for integer arrays
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class KComplementaryFinder
-{
+public class KComplementaryFinder {
+
+    /**
+     * Count K-complementary pairs in a given array of integers.
+     * Given an integer Array A, any pair (i, j) is K-complementary if K = A[i] + A[j];
+     * Example : A = [ 1, 2, 2, 3 ] k = 4 contains 2 valid k-pairs {0,3} and {1,2}
+     *
+     * The implementation of the k-complementary count algorithm is as follows:
+     *  - For each current value in the array, the "distance" i.e. the difference
+     *  between k and the value (i.e. the k-complementary) is checked in the map ,
+     *  if found, the pairs count is increased by the number of occurrences of
+     *  that complementary element.
+     *  - The element is put in the map with an initial counter if not present
+     *  or increased by one if already there.
+     *
+     * Since the check / insertions in the map have a time complexity of O(1)
+     * and the algorithm performs a full loop across the input array, the total
+     * time complexity is considered O(n).
+     *
+     * NOTE: This algorithm does not account for duplicates, i.e. the pairs
+     * (i,j) and (j,i) are considered equals.
+     *
+     * @param input the input array arguments
+     * @return true if the input string is a palindrome, false otherwise
+     */
+    public static int countKComplementaryPairs(@NonNull int[] input, int k)
+    {
+        int count = 0;
+        Map<Integer, Integer> map = new HashMap<>();
+
+        for (int item : input) {
+            count += map.getOrDefault(k - item, 0);
+            map.merge(item, 1, (key, value) -> value +1);
+        }
+
+        return count;
+    }
 
     /**
      * Find K-complementary pairs in a given array of integers.
@@ -111,43 +144,6 @@ public class KComplementaryFinder
         }
 
         return pairs;
-    }
-
-    /**
-     * Count K-complementary pairs in a given array of integers.
-     * Given an integer Array A, any pair (i, j) is K-complementary if K = A[i] + A[j];
-     * Example : A = [ 1, 2, 2, 3 ] k = 4 contains 2 valid k-pairs {0,3} and {1,2}
-     *
-     * The implementation of the k-complementary count algorithm is as follows:
-     *  - For each current value in the array, the "distance" i.e. the difference
-     *  between k and the value (i.e. the k-complementary) is checked in the map ,
-     *  if found, the pairs count is increased by the number of occurrences of
-     *  that complementary element.
-     *  - The element is put in the map with an initial counter if not present
-     *  or increased by one if already there.
-     *
-     * Since the check / insertions in the map have a time complexity of O(1)
-     * and the algorithm performs a full loop across the input array, the total
-     * time complexity is considered O(n).
-     *
-     * NOTE: This algorithm does not account for duplicates, i.e. the pairs
-     * (i,j) and (j,i) are considered equals.
-     *
-     * @param input the input array arguments
-     * @return true if the input string is a palindrome, false otherwise
-     */
-    public static int countKComplementaryPairs(@NonNull int[] input, int k)
-    {
-        int count = 0;
-        Map<Integer, Integer> map = new HashMap<>();
-
-        for (int item : input) {
-            count += map.getOrDefault(k - item, 0);
-            map.computeIfPresent(item, (key, value) -> value + 1);
-            map.putIfAbsent(item, 1);
-        }
-
-        return count;
     }
 
 }
