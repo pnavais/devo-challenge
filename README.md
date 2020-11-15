@@ -30,6 +30,7 @@ Assuming Maven is installed execute the following command in the project root :
 mvn clean package
 ```
 After succesful packaging the following structure is generated :
+
 ![doc2](images/doc2.png "Maven target structure")
 
 Each module provides an executable jar with a simple tester application.
