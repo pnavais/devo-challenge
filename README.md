@@ -90,7 +90,7 @@ The implementation of the server resides in the class "TfIdfServer" which wires 
 - The IndexManager : The main business logic implementing the algorithm in charge of indexing the documents.
 - The RankingManager : A class allowing to query the index manager for statistics and displaying them on a given print stream (stdout by default)
 
-The server starts a daemon thread and waits for file notifications to recompute the index. These notifications come as simple "events" using a very basic publish/subscribe pattern : the DirectoryWatcher notifies of incoming files, the TfIdfServer receives this notifications, wakes the thread from its waiting status and requests the refreshing of the index to the IndexManager.
+The server starts a daemon thread and waits for file notifications to recompute the index. These notifications come as simple "events" using a very basic publish/subscribe pattern : the DirectoryWatcher notifies of incoming files, the TfIdfServer receives these notifications, wakes the thread from its waiting status and requests the refreshing of the index to the IndexManager.
 
 The server starts also a timer task using the RankingManager to display the top N results at a given fixed rate.
 
