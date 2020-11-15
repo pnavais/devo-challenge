@@ -169,6 +169,7 @@ public class IndexManagerTest {
     @DisplayName("Fill the index with no terms")
     void fillIndexWithNoTermsTest() {
         Path doc2 = writeTestFile(testDir, "doc1.txt", ImmutableList.of("Dummy string"));
+        manager.setTerms(null);
         manager.loadFrom(testDir);
 
         await().atMost(5, SECONDS);

@@ -69,7 +69,7 @@ public class TfIdfRankingManager implements RankingManager {
      */
     @Override
     public void displayTopResults(int n, @NonNull IndexManager manager, @NonNull PrintStream pw) {
-        log.debug("Computing the TF/IDF top {} results : Terms [{}] (index size : {})", n, manager.getTerms(), manager.size());
+        log.debug("Computing the TF/IDF top {} results : Terms {} (index size : {})", n, manager.getTerms(), manager.size());
         List<DocStat> docStats = manager.getDocs().stream()
                 .map(doc -> DocStat.of(doc, manager.getTermsTfIdfFor(doc)))
                 .sorted(Comparator.comparing(DocStat::getTfIdf).reversed())
