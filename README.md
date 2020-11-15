@@ -137,6 +137,11 @@ The application provides the following flags :
 <li>-t <terms>  : The list of terms to lookup and index
 <li>-n <top>    : The maximum number of documents to show in the ranking
 <li>-p <period> : The period in seconds to display the updated ranking
+<li>-v[vv]      : The level of verbosity
+ 
+The following screenshot shows, with high verbosity level , the refreshing of the index upon file reception : 
+
+![doc7](images/doc7.png "Running ex3 with debug level")
  
  
 Additionnaly all applications can be accesed from a single "fat" jar by executing the launcher : 
