@@ -8,6 +8,13 @@ This is my implementation of the Devo challenge. It has been developed in Java 8
 Each exercise in the challenge has been defined in its own Maven module and a separate executable jar can be used for testing the implementation.
 For each module, Junit 5 unit tests have been defined grouped in a suite.
 
+The following modules have been defined : 
+- ex1 : Contains the implementation of the first exercise  (Palindrome Checker)
+- ex2 : Contains the implementation of the second exercise (K-Complementary pairs finder)
+- ex3 : Contains the implementation of the third exercise  (Tf/Idf statistics server)
+- ex-common : Contains utility methods common to all modules
+- ex-launcher : Provides a simple command-line launcher to execute all exercises in a single Spring boot "fat" jar
+
 ![doc1](images/doc1.png "Project structure")
 
 ## Development environment
@@ -69,7 +76,42 @@ time complexity is considered O(n).
 
 NOTE: This algorithm does not account for duplicates, i.e. the pairs (i,j) and (j,i) are considered equals.
 
+### Exercise 3 : Tf/Idf statistics server
+The exercise asks to implement a program running as a daemon/service that is watching for new documents in a given folder, and dynamically updates the computed tf/idf for each document and the inferred ranking. 
+The following assumptions have been made : 
+- We have a directory D containing a document set S, with one file per document. 
+- Documents will be added to that directory by external agents, but they will never be removed or overwritten. 
+- We are given a set of terms TT, and asked to compute the tf/idf of TT for each document in D, and report the N top documents sorted by relevance. 
 
+The implementation of the server resides in the class "TfIdfServer" which wires the key elements of the application : 
+- The DirectoryWatcher : A simple directory watcher implemented using the provided Java Platform WatchService to account for incoming files.
+- The IndexManager : The main business logic implementing the algorithm in charge of indexing the documents.
+- The RangkingManager : A simple timer task allowing to query the index manager for statistics and displaying them on a given print stream (stdout by default)
+
+The server starts a daemon thread and wait for file notifications to recompute the index. These notifications come as simple "events" using a very basic publish/subscribe pattern : the DirectoryWatcher notifies of incoming files, the TfIdfServer receives this notifications, wakes the thread from its waiting status and requests the refreshing of the index to the IndexManager.
+
+The server starts also a timer task using the RankingManager to display the top N results at a given fixed rate.
+
+The implementation of the IndexManager has been implemented in the class "SimpleIndexManager" which provides a basic implementation of the interface allowing to keep track of new files and building an index for the terms provided.
+
+The implementation of the index is as follows :
+  - A map will contain as keys the terms to index
+  - The value of each key in the map consists of a set (avoiding duplicates) of the document tf statistic for the term.
+ 
+In order to compute the idf of a given term per document, it would simply suffice of :
+  - Looking for the term in the map (O(1) operation)
+  - Looking for the document in the secondary map (O(1) operation) and extracting its tf value from the recorded value (DocTerm).
+  - Dividing the tf value found by the number of documents in the set for this terms. That is, only documents
+    containing the term will be present in the set.
+ 
+The combined tf/idf for all the terms would consist of the average of all individual tf/idf term statistics.
 
 ## Running the exercises 
+
+After building succesfully the project, at its root execute the executable jar for each individual exercise to launch its associated application.
+
+For example, to run the PalindromeChecker application in ex1 :
+
+![doc3](images/doc3.png "Running ex1")
+
 
