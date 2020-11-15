@@ -144,7 +144,7 @@ The following screenshot shows, with high verbosity level , the refreshing of th
 ![doc7](images/doc7.png "Running ex3 with debug level")
  
  
-Additionnaly all applications can be accesed from a single "fat" jar by executing the launcher : 
+Additionally all applications can be accesed from a single "fat" jar by executing the launcher : 
 
 ![doc6](images/doc6.png "Running through the launcher")
 
