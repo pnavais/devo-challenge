@@ -102,7 +102,7 @@ The implementation of the index is as follows :
  
 In order to compute the idf of a given term per document, it would simply suffice of :
   - Looking for the term in the map (O(1) operation)
-  - Looking for the document in the secondary map (O(1) operation) and extracting its tf value from the recorded value (DocTerm).
+  - Looking for the document in the secondary map (O(1) operation) and extracting its tf statistic from the recorded value (DocTerm).
   - Dividing the tf value found by the number of documents in the set for this term. That is, only documents
     containing the term will be present in the map.
  
