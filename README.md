@@ -10,7 +10,13 @@ For each module, Junit 5 unit tests have been defined grouped in a suite.
 
 ![doc1](images/doc1.png "Project structure")
 
-## Buid instructions
+## Development environment
+The different exercises where developed and tested using the following system environment :
+- OS    : Mac OS X 10.15.7 x86_64
+- JDK   : Amazon Corretto JDK 8 (1.8.0_171)
+- Maven : 3.6.3 
+
+## Build instructions
 
 Assuming Maven is installed execute the following command in the project root : 
 ```
@@ -20,7 +26,9 @@ After succesful packaging the following structure is generated :
 ![doc2](images/doc2.png "Maven target structure")
 
 Each module provides an executable jar with a simple tester application.
-Refer to [running section](#Running the exercises) to find instructions on how to launch the exercise tester applications.
+Additionally a launcher has been created grouping all exercises in a single "fat" jar. 
+
+Refer to [running section](#Running the exercises) to find instructions on how to launch the exercise tester applications or global launcher.
 
 ## Exercises implementation details
 ### Exercise 1 : Palindrome checker
@@ -65,8 +73,3 @@ NOTE: This algorithm does not account for duplicates, i.e. the pairs (i,j) and (
 
 ## Running the exercises 
 
-## Development environment
-The different exercises where developed and tested using the following system environment :
-- OS    : Mac OS X 10.15.7 x86_64
-- JDK   : Amazon Corretto JDK 8 (1.8.0_171)
-- Maven : 3.6.3 
