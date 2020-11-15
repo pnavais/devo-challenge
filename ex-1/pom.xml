@@ -34,12 +34,11 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.github.pnavais.shell.PalindromeCheckerShell</mainClass>
+                            <mainClass>com.github.pnavais.ex1.PalindromeCheckerApp</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

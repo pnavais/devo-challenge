@@ -11,11 +11,31 @@
     </parent>
 
     <artifactId>devo-challenge-ex3</artifactId>
+    <name>devo-challenge-ex3</name>
     <version>0.1.0</version>
     <packaging>jar</packaging>
-
-    <name>devo-challenge-ex3</name>
-    <description>Implementation of the first exercise : TF/IDF computation</description>
+    <description>TF/IDF Server</description>
     <url>http://github.com/pnavais/devo-challenge</url>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.github.pnavais</groupId>
+            <artifactId>devo-challenge-ex-common</artifactId>
+            <version>0.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

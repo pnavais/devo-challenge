@@ -1,0 +1,4 @@
+${AnsiColor.GREEN}
+${info.module.name}
+=============
+${AnsiColor.YELLOW}:: ${info.module.artifactId} :: ${AnsiColor.CYAN}(${info.module.formatted-version})${Ansi.DEFAULT} Pablo Navais (2020)
