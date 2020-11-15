@@ -36,7 +36,7 @@ After succesful packaging the following structure is generated :
 Each module provides an executable jar with a simple tester application.
 Additionally a launcher has been created grouping all exercises in a single "fat" jar. 
 
-Refer to [running section](#Running the exercises) to find instructions on how to launch the exercise tester applications or global launcher.
+Refer to [running section](#running-the-exercises) to find instructions on how to launch the exercise tester applications or global launcher.
 
 ## Exercises implementation details
 ### Exercise 1 : Palindrome checker
