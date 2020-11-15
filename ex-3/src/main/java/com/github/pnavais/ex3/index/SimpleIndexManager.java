@@ -18,8 +18,8 @@
 
 package com.github.pnavais.ex3.index;
 
-import com.github.pnavais.ex3.api.exception.FileParsingException;
 import com.github.pnavais.common.file.FileCommons;
+import com.github.pnavais.ex3.api.exception.FileParsingException;
 import com.github.pnavais.ex3.api.index.IndexManager;
 import com.github.pnavais.ex3.api.reader.DocumentReader;
 import com.github.pnavais.ex3.reader.DocumentReaderFactory;
@@ -35,7 +35,6 @@ import java.nio.file.Path;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.stream.Collectors;
 
 /**
  * A basic implementation of the {@link IndexManager} interface allowing to keep track

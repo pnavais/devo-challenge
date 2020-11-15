@@ -48,7 +48,7 @@ public class BufferedDocumentReader implements DocumentReader {
      */
     public void openFile(Path filePath) throws FileParsingException {
         try  {
-            this.reader = Files.newBufferedReader(filePath);//new BufferedReader(new FileReader(Files.n));
+            this.reader = Files.newBufferedReader(filePath);
         } catch (Exception e) {
             throw new FileParsingException("Error processing file "+filePath, e);
         }
