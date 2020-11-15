@@ -3,7 +3,7 @@ Devo challenge implementation
 
 ## Rationale
 This is my implementation of the Devo challenge. It has been developed in Java 8 using Spring Boot (2.4.0) and packaged as a Maven multi-module project.<p>
-Pre-packaged jars can be found in the package area.
+Pre-packaged jars can be found in the release area.
 
 ## Project Structure
 Each exercise in the challenge has been defined in its own Maven module and a separate executable jar can be used for testing the implementation.
