@@ -115,4 +115,35 @@ For example, to run the PalindromeChecker application in ex1 :
 
 ![doc3](images/doc3.png "Running ex1")
 
+The application provides the following flags : 
+-i, --input <pattern> : the string to check 
 
+To run the KComplementaryFinder application in ex2 : 
+
+![doc4](images/doc4.png "Running ex2")
+
+The application provides the following flags : 
+-i, --input <array> : the integer array in a comma-separated format
+-k : the value of k
+
+Finally, running the TF/IDF Statistics server can be made as follows : 
+
+![doc5](images/doc5.png "Running ex3")
+
+The application provides the following flags : 
+
+-d <dir>    : The directory to watch for documents. 
+-t <terms>  : The list of terms to lookup and index
+-n <top>    : The maximum number of documents to show in the ranking
+-p <period> : The period in seconds to display the updated ranking
+ 
+ 
+Additionnaly all applications can be accesed from a single "fat" jar by executing the launcher : 
+
+![doc6](images/doc6.png "Running through the launcher")
+
+The application provides the following flags : 
+
+- e <number> : The number of the exercise to launch (1-3)
+
+After this mandatory argument, a double dash "--" indicates the arguments to feed to the actual exercise application.
