@@ -8,7 +8,7 @@ This is my implementation of the Devo challenge. It has been developed in Java 8
 Each exercise in the challenge has been defined in its own Maven module and a separate executable jar can be used for testing the implementation.
 For each module, Junit 5 unit tests have been defined grouped in a suite.
 
-![doc1](images/doc1.png "Project structure"
+![doc1](images/doc1.png "Project structure")
 
 ## Buid instructions
 
@@ -17,7 +17,7 @@ Assuming Maven is installed execute the following command in the project root :
 mvn clean package
 ```
 After succesful packaging the following structure is generated :
-![doc2](images/doc2.png "Maven target structure"
+![doc2](images/doc2.png "Maven target structure")
 
 Each module provides an executable jar with a simple tester application.
 Refer to [running section](#Running the exercises) to find instructions on how to launch the exercise tester applications.
