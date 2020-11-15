@@ -98,13 +98,13 @@ The implementation of the IndexManager has been implemented in the class "Simple
 
 The implementation of the index is as follows :
   - A map will contain as keys the terms to index
-  - The value of each key in the map consists of a set (avoiding duplicates) of the document tf statistic for the term.
+  - The value of each key in the map consists of a secondary map (avoiding duplicates) containing only the documents containing the term and its tf statistic.
  
 In order to compute the idf of a given term per document, it would simply suffice of :
   - Looking for the term in the map (O(1) operation)
   - Looking for the document in the secondary map (O(1) operation) and extracting its tf value from the recorded value (DocTerm).
-  - Dividing the tf value found by the number of documents in the set for this terms. That is, only documents
-    containing the term will be present in the set.
+  - Dividing the tf value found by the number of documents in the set for this term. That is, only documents
+    containing the term will be present in the map.
  
 The combined tf/idf for all the terms would consist of the average of all individual tf/idf term statistics.
 
