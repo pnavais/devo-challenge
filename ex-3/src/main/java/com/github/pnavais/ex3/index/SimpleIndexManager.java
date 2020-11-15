@@ -35,6 +35,7 @@ import java.nio.file.Path;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 /**
  * A basic implementation of the {@link IndexManager} interface allowing to keep track
@@ -198,6 +199,34 @@ public class SimpleIndexManager implements IndexManager {
     @Override
     public List<Path> getDocs() {
         return new ArrayList<>(documents.keySet());
+    }
+
+    /**
+     * Removes the document set and the index values
+     */
+    @Override
+    public void clear() {
+        this.documents.clear();
+        this.index.values().forEach(Map::clear);
+        this.index.clear();
+    }
+
+    /**
+     * Retrieves the document statistics for
+     * the given term in the index.
+     *
+     * @param term the term
+     * @return the list of document statistics
+     */
+    @Override
+    public List<DocTerm> getDocTermsFor(String term) {
+        List<DocTerm> docTermList = Collections.emptyList();
+        Map<Path, DocTerm> termMap = index.get(term);
+        if (termMap != null) {
+            docTermList = new ArrayList<>(termMap.values());
+        }
+
+        return docTermList;
     }
 
     /**

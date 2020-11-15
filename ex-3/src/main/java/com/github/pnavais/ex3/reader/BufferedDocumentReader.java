@@ -24,8 +24,8 @@ import com.github.pnavais.ex3.index.DocTerm;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -48,7 +48,7 @@ public class BufferedDocumentReader implements DocumentReader {
      */
     public void openFile(Path filePath) throws FileParsingException {
         try  {
-            this.reader = new BufferedReader(new FileReader(filePath.toFile()));
+            this.reader = Files.newBufferedReader(filePath);//new BufferedReader(new FileReader(Files.n));
         } catch (Exception e) {
             throw new FileParsingException("Error processing file "+filePath, e);
         }

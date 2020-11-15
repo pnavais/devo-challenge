@@ -18,6 +18,8 @@
 
 package com.github.pnavais.ex3.api.index;
 
+import com.github.pnavais.ex3.index.DocTerm;
+
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Set;
@@ -77,6 +79,15 @@ public interface IndexManager {
     double getTermTfIdf(String term, Path doc);
 
     /**
+     * Retrieves the document statistics for
+     * the given term in the index.
+     *
+     * @param term the term
+     * @return the list of document statistics
+     */
+    List<DocTerm> getDocTermsFor(String term);
+
+    /**
      * Compute the average TF/IDF statistic for
      * all the terms in the given document in the index.
      *
@@ -98,5 +109,10 @@ public interface IndexManager {
      * @return the list of documents.
      */
     List<Path> getDocs();
+
+    /**
+     * Removes the document set and the index
+     */
+    void clear();
 
 }

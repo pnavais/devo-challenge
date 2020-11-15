@@ -16,7 +16,7 @@
  *
  */
 
-package com.github.pnavais.ex2;
+package com.github.pnavais.ex3;
 
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.platform.suite.api.SelectPackages;
@@ -25,10 +25,10 @@ import org.junit.runner.RunWith;
 
 /**
  * Provides the test runner configuration and defines the suite of tests
- * to run for the Exercise 2 module.
+ * to run for the Exercise 3 module.
  */
 @RunWith(JUnitPlatform.class)
 @SuiteDisplayName("Unit tests for the Exercise 2")
-@SelectPackages("com.github.pnavais.ex2.core")
-public class Ex2TestSuite {
+@SelectPackages("com.github.pnavais.ex3.index")
+public class Ex3TestSuite {
 }

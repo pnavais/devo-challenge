@@ -16,19 +16,12 @@
  *
  */
 
-package com.github.pnavais.ex2;
+package com.github.pnavais.ex3.test;
 
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.platform.suite.api.SelectPackages;
-import org.junit.platform.suite.api.SuiteDisplayName;
-import org.junit.runner.RunWith;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
-/**
- * Provides the test runner configuration and defines the suite of tests
- * to run for the Exercise 2 module.
- */
-@RunWith(JUnitPlatform.class)
-@SuiteDisplayName("Unit tests for the Exercise 2")
-@SelectPackages("com.github.pnavais.ex2.core")
-public class Ex2TestSuite {
+@Configuration
+@ComponentScan(basePackages = {"com.github.pnavais.ex3"})
+public class Ex3TestConfig {
 }
