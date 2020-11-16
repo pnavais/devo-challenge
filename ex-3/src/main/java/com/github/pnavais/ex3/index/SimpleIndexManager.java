@@ -41,15 +41,19 @@ import java.util.concurrent.ConcurrentHashMap;
  * of new files and building an index for the terms provided.
  * The implementation of the index is as follows :
  * - A map will contain as keys the terms to index
- * - The value of each key in the map consists of a set (avoiding duplicates) of the document tf statistic
- * for the term.
+ * - The value of each key in the map consists of a secondary map (avoiding duplicates) containing only the documents containing the term 
+ *   and its tf statistic i.e tf(term, doc) = number of occurrences / total word count of doc.
  * <p>
  * In order to compute the idf of a given term per document, it would simply suffice of :
  * - Looking for the term in the map (O(1) operation)
- * - Looking for the document in the secondary map (O(1) operation) and extracting its tf value from the recorded
+ * - Looking for the document in the secondary map (O(1) operation) and extracting its tf statistic from the recorded
  * value (DocTerm).
- * - Dividing the tf value found by the number of documents in the set for this terms. That is, only documents
- * containing the term will be present in the set.
+ * - Computing the logarithm in base 10 of dividing the total number of documents by the number of documents in the set 
+ *   for this term. That is, only documents containing the term will be present in the map. 
+ *     i.e. idf("term", D) = log(D/d) with D , total number of documents in the index and d the number of documents containing the term.
+ *  
+ *  To compute the tf/idf of the term we just multiply the tf of the term for the document by the idf previously found
+ *     i.e. tf/idf("term", doc, D) = tf("term", doc) x idf("term", D)
  * <p>
  * The combined tf/idf for all the terms would consist of the average of all individual tf/idf term statistics.
  */
